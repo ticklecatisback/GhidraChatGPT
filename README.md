@@ -26,6 +26,15 @@ The plugin can be built with or without docker. If it is built without docker th
 4. Restart Ghidra
 5. In the CodeBrowser window of Ghidra: File > Configure > Plugin icon in the top right > Enable the GhidraChatGPT plugin
 
+### Llama3.2 Setup
+
+To include llama3.2 in your setup, follow these steps:
+
+1. Ensure you have added the llama3.2 dependency in `ghidrachatgpt/build.gradle`.
+2. Update the `build.sh` script to include llama3.2 build steps.
+3. Update the `Dockerfile` to include installation steps for llama3.2.
+4. Follow the build instructions above to build the plugin with llama3.2.
+
 ## Usage
 
 The plugin's features and settings can be accessed via the `Tools` menu in the Ghidra CodeBrowser window.
@@ -46,6 +55,9 @@ Attempts to discover all potential vulnerabilities in the current function with 
 
 **Beautify Function** (Tools > GhidraChatGPT > Beautify Function)  
 Attempts to beautify the current function by identifying and applying more meaningful variable and function names with the help of ChatGPT.
+
+**Llama3.2 Integration** (Tools > GhidraChatGPT > Llama3.2 Integration)  
+Allows you to use llama3.2 functionalities within the GhidraChatGPT plugin. Ensure you have followed the setup instructions to include llama3.2 in your build.
 
 ### Settings
 

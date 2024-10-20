@@ -54,6 +54,7 @@ repositories {
 dependencies {
     implementation 'com.theokanning.openai-gpt3-java:service:0.16.0'
 	implementation 'org.json:json:20220924'
+	implementation 'com.llama3:llama3.2:1.0.0'
 }
 
 // Exclude additional files from the built extension

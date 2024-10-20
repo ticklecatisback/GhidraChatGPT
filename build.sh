@@ -35,6 +35,9 @@ function clean() {
     rm -rf ghidrachatgpt/build || true
     rm -rf ghidrachatgpt/dist || true
     rm -rf ghidrachatgpt/lib || true
+    rm -rf llama3.2/build || true
+    rm -rf llama3.2/dist || true
+    rm -rf llama3.2/lib || true
 }
 
 function build() {
@@ -42,6 +45,15 @@ function build() {
 
     export GHIDRA_INSTALL_DIR="$GHIDRA_PATH"
     pushd ghidrachatgpt > /dev/null 2>&1
+    gradle
+    
+    APPNAME=$(ls dist/*.zip | xargs basename)
+    cp dist/*.zip "$GHIDRA_PATH/Extensions/Ghidra"
+    echo "[+] Built $APPNAME and copied it to $GHIDRA_PATH/Extensions/Ghidra/$APPNAME"
+    popd > /dev/null 2>&1
+
+    echo "[+] Building the llama3.2 Plugin" >&2
+    pushd llama3.2 > /dev/null 2>&1
     gradle
     
     APPNAME=$(ls dist/*.zip | xargs basename)

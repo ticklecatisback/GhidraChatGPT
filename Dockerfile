@@ -18,10 +18,12 @@ RUN apt-get -yq update \
     && useradd -m ${USER} --uid=${UID} --gid ${GID}
 
 COPY ghidrachatgpt /build
+COPY llama3.2 /llama3.2
 COPY data/entry /entry
 
 RUN chmod +x /entry \
-    && chown -R ${USER}:${USER} /build
+    && chown -R ${USER}:${USER} /build \
+    && chown -R ${USER}:${USER} /llama3.2
 
 RUN wget -q -O gradle.zip "https://downloads.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
     && echo "${GRADLE_CHECKSUM} gradle.zip" | sha256sum --check - \
